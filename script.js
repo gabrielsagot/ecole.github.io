@@ -1,4 +1,4 @@
-// === IMPORT GSAP N�CESSAIRE ===
+// === IMPORT GSAP NÉCESSAIRE ===
 // <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 // <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
@@ -16,6 +16,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let modalOpen = false;
 
+  // === BASE DE DONNÉES DES DÉTAILS TECHNIQUES ===
+  const detailsData = {
+    "cene.jpg": {
+      taille: "460 × 880 cm",
+      technique: "Fresque",
+      lieu: "Couvent Santa Maria delle Grazie, Milan"
+    },
+    "joconde.webp": {
+      taille: "77 × 53 cm",
+      technique: "Huile sur bois",
+      lieu: "Musée du Louvre"
+    },
+    "jeune-fille-perle.jpg": {
+      taille: "44.5 × 39 cm",
+      technique: "Huile sur toile",
+      lieu: "Mauritshuis, La Haye"
+    },
+    "epoux-arnolfini.jpg": {
+      taille: "82 × 60 cm",
+      technique: "Huile sur bois",
+      lieu: "National Gallery, Londres"
+    },
+    "angelots.webp": {
+      taille: "Détail extrait (env. 30 × 40 cm)",
+      technique: "Huile sur toile",
+      lieu: "Galerie des Offices, Florence"
+    },
+    "tricheur.jpg": {
+      taille: "106 × 146 cm",
+      technique: "Huile sur toile",
+      lieu: "Musée du Louvre"
+    },
+    "dame-hermine.webp": {
+      taille: "54 × 39 cm",
+      technique: "Huile sur bois",
+      lieu: "Musée Czartoryski, Cracovie"
+    },
+    "francois-1er.jpg": {
+      taille: "95 × 74 cm",
+      technique: "Huile sur bois",
+      lieu: "Musée du Louvre"
+    },
+    "liberte-peuple.jpg": {
+      taille: "260 × 325 cm",
+      technique: "Huile sur toile",
+      lieu: "Musée du Louvre"
+    }
+  };
+
   document.querySelectorAll(".clickable-image").forEach(img => {
     img.addEventListener("click", () => {
       const section = img.closest(".artwork-section");
@@ -26,12 +75,23 @@ document.addEventListener("DOMContentLoaded", () => {
       modalDate.textContent = section.querySelector(".artwork-date")?.textContent || "";
       modalDescription.textContent = section.querySelector(".artwork-description")?.textContent || "";
 
-      technicalDetails.innerHTML = `
-        <li><strong>Taille :</strong> Environ 150 � 200 cm</li>
-        <li><strong>Technique :</strong> Huile sur toile</li>
-        <li><strong>Lieu :</strong> Mus�e du Louvre</li>
-      `;
+      // Récupération dynamique des détails
+      const filename = img.src.split("/").pop();
+      const data = detailsData[filename];
 
+      if (data) {
+        technicalDetails.innerHTML = `
+          <li><strong>Taille :</strong> ${data.taille}</li>
+          <li><strong>Technique :</strong> ${data.technique}</li>
+          <li><strong>Lieu :</strong> ${data.lieu}</li>
+        `;
+        console.log(`[Modale] Détails chargés pour ${filename}`);
+      } else {
+        technicalDetails.innerHTML = `<li>Détails techniques indisponibles.</li>`;
+        console.warn(`[Modale] ⚠️ Détails manquants pour : ${filename}`);
+      }
+
+      // Affichage de la modale
       modal.style.opacity = "0";
       modal.style.display = "flex";
       modalOpen = true;
@@ -123,10 +183,10 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleBtn.innerHTML = `<i class="fas fa-sliders-h" style="margin-right: 0.5rem;"></i>` +
       (filtersVisible ? "Masquer les filtres" : "Afficher les filtres");
 
-    console.log(`[Filtres] �tat : ${filtersVisible ? "OUVERTS" : "FERM�S"}`);
+    console.log(`[Filtres] État : ${filtersVisible ? "OUVERTS" : "FERMÉS"}`);
   });
 
-  // === FILTRAGE DES �UVRES ===
+  // === FILTRAGE DES ŒUVRES ===
   const allArtworks = document.querySelectorAll(".artwork-section");
   let activeAuthor = "all";
   let activeCentury = "all";
@@ -139,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
       activeAuthor = btn.getAttribute("data-filter-author");
       setActiveButton(authorBtns, btn);
       filterArtworks();
-      console.log(`[Filtre Auteur] S�lection : ${activeAuthor}`);
+      console.log(`[Filtre Auteur] Sélection : ${activeAuthor}`);
     });
   });
 
@@ -148,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
       activeCentury = btn.getAttribute("data-filter-century");
       setActiveButton(centuryBtns, btn);
       filterArtworks();
-      console.log(`[Filtre Si�cle] S�lection : ${activeCentury}`);
+      console.log(`[Filtre Siècle] Sélection : ${activeCentury}`);
     });
   });
 
@@ -190,8 +250,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // === INIT �TAT PAR D�FAUT ===
+  // === INIT ÉTAT PAR DÉFAUT ===
   document.querySelector('[data-filter-author="all"]')?.classList.add("active");
   document.querySelector('[data-filter-century="all"]')?.classList.add("active");
-  console.log("[Init] Filtres et modale op�rationnels.");
+  console.log("[Init] Filtres et modale opérationnels.");
 });

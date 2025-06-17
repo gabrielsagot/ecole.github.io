@@ -341,6 +341,48 @@ body {
   transform: translateY(-1px);
 }
 
+
+
+
+/* ======= MESSAGE D'INFO CLIQUABLE ======= */
+.info-click-message {
+  background: linear-gradient(to right, #ffecc7, #fff6e4);
+  border-left: 5px solid #f3a33b;
+  color: #3a2f18;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 2rem auto;
+  max-width: 900px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+.info-click-message i {
+  font-size: 1.3rem;
+  color: #d9861c;
+}
+
+/* Animation douce à l’arrivée */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
 /* ======= BARRE DE FILTRES (REPLIABLE) ======= */
 .filter-bar {
   margin: 2rem auto;
