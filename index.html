@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L’Histoire à travers la peinture</title>
+  <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+<body>
+
+  <!-- === SECTION D'INTRODUCTION === -->
+  <header class="site-header">
+    <h1 class="main-title">L’Histoire à travers la peinture</h1>
+    <p class="intro-text">
+      Un voyage visuel à travers les plus grandes œuvres qui ont marqué l’histoire.  
+      Plongez dans une sélection de tableaux emblématiques, entre mystère, symboles et héritage culturel.
+    </p>
+  </header>
+  
+  
+<!-- === TOGGLE FILTRES === -->
+<div class="filter-toggle-container">
+  <button id="toggle-filters" class="toggle-filters-btn">
+  <i class="fas fa-sliders-h"></i> Afficher les filtres
+</button>
+</div>
+
+<!-- === BARRE DE FILTRES (repliable) === -->
+<section class="filter-bar hidden">
+  <div class="filter-group">
+    <h3>Auteur</h3>
+    <button class="filter-btn" data-filter-author="all">Tous</button>
+    <button class="filter-btn" data-filter-author="vinci">L. de Vinci</button>
+    <button class="filter-btn" data-filter-author="vermeer">Vermeer</button>
+    <button class="filter-btn" data-filter-author="van-eyck">van Eyck</button>
+    <button class="filter-btn" data-filter-author="raphael">Raphaël</button>
+    <button class="filter-btn" data-filter-author="latour">La Tour</button>
+    <button class="filter-btn" data-filter-author="clouet">Clouet</button>
+    <button class="filter-btn" data-filter-author="delacroix">Delacroix</button>
+  </div>
+
+  <div class="filter-group">
+    <h3>Siècle</h3>
+    <button class="filter-btn" data-filter-century="all">Tous</button>
+    <button class="filter-btn" data-filter-century="15">XVe</button>
+    <button class="filter-btn" data-filter-century="16">XVIe</button>
+    <button class="filter-btn" data-filter-century="17">XVIIe</button>
+    <button class="filter-btn" data-filter-century="19">XIXe</button>
+  </div>
+</section>
+
+  <!-- === SECTION 1 : La Cène === -->
+  <section class="artwork-section" id="oeuvre1" data-author="vinci" data-century="15">
+    <div class="artwork-images">
+      <img src="images/cene.jpg" alt="La Cène" class="clickable-image">
+    </div>
+    <div class="artwork-details">
+      <h2 class="artwork-title">La Cène</h2>
+      <p class="artwork-author">Léonard de Vinci</p>
+      <p class="artwork-date">1495-1498</p>
+      <p class="artwork-description short">
+        Une représentation saisissante du dernier repas du Christ avec ses apôtres, pleine de tension et de symbolisme.
+      </p>
+      
+    </div>
+  </section>
+
+  <!-- === SECTION 2 : Joconde + Jeune fille à la perle === -->
+  <section class="artwork-section" id="oeuvre2" data-author="vinci vermeer" data-century="15 17">
+    <div class="artwork-images">
+      <img src="images/joconde.webp" alt="La Joconde" class="clickable-image">
+      <img src="images/jeune-fille-perle.jpg" alt="La Jeune Fille à la perle" class="clickable-image">
+    </div>
+    <div class="artwork-details">
+      <h2 class="artwork-title">La Joconde et la Jeune fille à la perle</h2>
+      <p class="artwork-author">Léonard de Vinci / Johannes Vermeer</p>
+      <p class="artwork-date">1503 / 1665</p>
+      <p class="artwork-description short">
+        Deux chefs-d'œuvre du portrait : mystère, regard figé et élégance silencieuse.
+      </p>
+      
+    </div>
+  </section>
+
+  <!-- === SECTION 3 : Époux Arnolfini + Angelots === -->
+  <section class="artwork-section" id="oeuvre3" data-author="van-eyck raphael" data-century="15 16">
+    <div class="artwork-images">
+      <img src="images/epoux-arnolfini.jpg" alt="Les Époux Arnolfini" class="clickable-image">
+      <img src="images/angelots.webp" alt="Les Angelots" class="clickable-image">
+    </div>
+    <div class="artwork-details">
+      <h2 class="artwork-title">Les Époux Arnolfini et les Angelots</h2>
+      <p class="artwork-author">Jan van Eyck / Raphaël</p>
+      <p class="artwork-date">1434 / 1512</p>
+      <p class="artwork-description short">
+        Deux visions contrastées : le mariage bourgeois et la douceur angélique, entre réalisme flamand et grâce italienne.
+      </p>
+      
+    </div>
+  </section>
+
+  <!-- === SECTION 4 : Le Tricheur à l’as de carreau === -->
+  <section class="artwork-section" id="oeuvre4" data-author="latour" data-century="17">
+    <div class="artwork-images">
+      <img src="images/tricheur.jpg" alt="Le Tricheur à l’as de carreau" class="clickable-image">
+    </div>
+    <div class="artwork-details">
+      <h2 class="artwork-title">Le Tricheur à l’as de carreau</h2>
+      <p class="artwork-author">Georges de La Tour</p>
+      <p class="artwork-date">vers 1635</p>
+      <p class="artwork-description short">
+        Une scène tendue et théâtrale : chaque geste cache un mensonge, chaque regard trahit un complot.
+      </p>
+      
+    </div>
+  </section>
+
+  <!-- === SECTION 5 : Dame à l’Hermine + François Ier === -->
+  <section class="artwork-section" id="oeuvre5" data-author="vinci clouet" data-century="15 16">
+    <div class="artwork-images">
+      <img src="images/dame-hermine.webp" alt="La Dame à l’Hermine" class="clickable-image">
+      <img src="images/francois-1er.jpg" alt="François Ier, roi de France" class="clickable-image">
+    </div>
+    <div class="artwork-details">
+      <h2 class="artwork-title">La Dame à l'Hermine et Françpis Premier roi de France</h2>
+      <p class="artwork-author">Léonard de Vinci / Jean Clouet</p>
+      <p class="artwork-date">1489 / vers 1527</p>
+      <p class="artwork-description short">
+        Portraits de figures d’influence entre délicatesse féminine et autorité royale.
+      </p>
+      
+    </div>
+  </section>
+
+  <!-- === SECTION 6 : La Liberté guidant le peuple === -->
+  <section class="artwork-section" id="oeuvre6" data-author="delacroix" data-century="19">
+    <div class="artwork-images">
+      <img src="images/liberte-peuple.jpg" alt="La Liberté guidant le peuple" class="clickable-image">
+    </div>
+    <div class="artwork-details">
+      <h2 class="artwork-title">La Liberté guidant le peuple</h2>
+      <p class="artwork-author">Eugène Delacroix</p>
+      <p class="artwork-date">1830</p>
+      <p class="artwork-description short">
+        Allégorie puissante de la révolte populaire et de l’espoir révolutionnaire, menée par une figure féminine mythique.
+      </p>
+      
+    </div>
+  </section>
+
+  <!-- === POPUP MODALE GLOBALE === -->
+  <div class="modal-overlay" id="image-modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <img src="" alt="Image en grand" id="modal-image">
+      <div class="modal-text">
+        <h3 id="modal-title">Titre de l’œuvre</h3>
+        <p id="modal-author">Auteur</p>
+        <p id="modal-date">Date</p>
+        <p id="modal-description">Description complète de l'œuvre</p>
+        <ul class="technical-details">
+          <li><strong>Taille :</strong> —</li>
+          <li><strong>Technique :</strong> —</li>
+          <li><strong>Lieu :</strong> —</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
