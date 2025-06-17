@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ease: "power3.out",
       scrollTrigger: {
         trigger: section,
-        start: "top 80%",
+        start: "top 100%",
       }
     });
   });
