@@ -8,9 +8,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preload" as="image" href="bandeau.webp" type="image/webp">
 
 
 </head>
+
 <body>
 
 
@@ -26,7 +28,12 @@
 
 <!-- === SECTION D'INTRODUCTION === -->
 <header class="site-header">
-  <img src="bandeau.png" alt="Fond histoire de la peinture" class="header-bg">
+  <picture class="header-bg">
+    <source srcset="bandeau.avif" type="image/avif">
+    <source srcset="bandeau.webp" type="image/webp">
+    <img src="bandeau.jpg" alt="Fond histoire de la peinture" loading="eager" />
+  </picture>
+
   <div class="header-overlay"></div>
 
   <h1 class="main-title">L’Histoire à travers la peinture</h1>
