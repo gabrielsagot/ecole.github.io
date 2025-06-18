@@ -18,102 +18,157 @@ body {
 
 /* ======= TITRES ET INTRODUCTION ======= */
 .site-header {
-  padding: 4rem 2rem;
+  position: relative;
   text-align: center;
-  background-color: #fffdf6;
-  border-bottom: 1px solid #eee;
+  padding: 6rem 2rem 4rem;
+  color: white;
+  background: 
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+    url("bandeau.png") center/cover no-repeat;
+  background-attachment: fixed;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .main-title {
   font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
-  color: #1a1a1a;
+  font-size: 3rem;
+  font-weight: 800;
   margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .intro-text {
-  font-size: 1.2rem;
-  color: #555;
-  max-width: 700px;
+  font-size: 1.25rem;
+  max-width: 800px;
   margin: 0 auto;
+  line-height: 1.7;
+  color: #f2f2f2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* ======= SECTION ŒUVRE ======= */
+/* ======= SECTION ŒUVRE ULTRA DESIGN ======= */
 .artwork-section {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  padding: 4rem 2rem;
-  border-bottom: 1px solid #e7e7e7;
-  max-width: 1200px;
+  gap: 2.5rem;
+  padding: 5rem 2rem;
+  position: relative;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  max-width: 1300px;
   margin: 0 auto;
+  background: linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  transition: background 0.5s ease;
 }
 
+
+
+.artwork-section::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin: 3rem auto 0;
+  background: linear-gradient(to right, #d4af7f, #c6a972);
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
+
+
+
+
+/* ======= IMAGES DE L’ŒUVRE ======= */
 .artwork-images {
   display: flex;
-  gap: 1.5rem;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
 }
 
 .artwork-images img {
-  max-height: 280px;
+  max-height: 320px;
   width: auto;
-  border-radius: 12px;
+  border-radius: 20px;
   object-fit: cover;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, filter 0.3s ease;
-  cursor: pointer;
+  cursor: zoom-in;
+  transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+
+  /* 🌫️ Style premium */
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+  filter: brightness(0.97) saturate(1.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .artwork-images img:hover {
-  transform: scale(1.03);
-  filter: brightness(1.05);
+  transform: scale(1.07) rotateZ(0.3deg);
+  filter: brightness(1.07) contrast(1.08) saturate(1.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  z-index: 2;
 }
-
 /* ======= DÉTAILS DE L’ŒUVRE ======= */
 .artwork-details {
   text-align: center;
-  padding: 0 1rem;
+  padding: 0 2rem;
 }
 
 .artwork-title {
   font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  color: #2c2c2c;
-  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1c1c1c;
+  margin-bottom: 0.6rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .artwork-author,
 .artwork-date {
-  font-size: 0.95rem;
-  color: #777;
-  margin: 0.25rem 0;
+  font-size: 1rem;
+  color: #888;
+  font-style: italic;
+  margin: 0.3rem 0;
 }
 
 .artwork-description {
-  max-width: 700px;
-  margin: 1rem auto;
-  font-size: 1.05rem;
-  color: #333;
+  max-width: 800px;
+  margin: 1.5rem auto 0;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #444;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.3s ease;
 }
 
+/* ======= BOUTON "VOIR PLUS" ======= */
 .see-more-btn {
-  margin-top: 0.5rem;
-  padding: 0.6rem 1.2rem;
-  background-color: #c6a972;
+  margin-top: 1.2rem;
+  padding: 0.7rem 1.4rem;
+  background: linear-gradient(135deg, #d4af7f, #c6a972);
   color: white;
   font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 }
 
 .see-more-btn:hover {
-  background-color: #a88d5a;
+  background: linear-gradient(135deg, #b8925e, #a88d5a);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
-
 
 /* ======= MODALE POPUP ======= */
 .modal-overlay {
@@ -485,3 +540,77 @@ body {
 }
 
 
+.clickable-image:hover {
+  transform: scale(1.05);
+  transition: transform 0.4s ease;
+  filter: brightness(1.1);
+}
+
+
+
+/* ======= TIMELINE STICKY ULTRA AMÉLIORÉE ======= */
+.timeline-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 1rem 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1200px;
+}
+
+.timeline-item {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #777;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+  padding-bottom: 0.3rem;
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: transparent;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.timeline-item:hover {
+  color: #222;
+  transform: scale(1.07);
+}
+
+.timeline-item:hover::after {
+  background-color: #bbb;
+  transform: translateX(-50%) scale(1.2);
+}
+
+.timeline-item.active {
+  color: #c6a972;
+  font-weight: 700;
+}
+
+.timeline-item.active::after {
+  background-color: #c6a972;
+  transform: translateX(-50%) scale(1.4);
+}

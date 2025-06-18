@@ -250,6 +250,56 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
+// === TIMELINE STICKY (INTELLIGENTE) ===
+
+// Lorsqu’on clique sur une bulle de siècle
+document.querySelectorAll(".timeline-item").forEach(item => {
+  item.addEventListener("click", () => {
+    const century = item.dataset.century;
+
+    // Trouve la première section qui contient ce siècle
+    const targetSection = [...document.querySelectorAll(".artwork-section")]
+      .find(section => section.dataset.century.split(" ").includes(century));
+
+    if (targetSection) {
+      window.scrollTo({
+        top: targetSection.offsetTop - 80,
+        behavior: "smooth"
+      });
+    }
+
+    // Mise à jour de l'affichage des bulles actives (couleurs)
+    updateActiveTimelineItems([century]);
+  });
+});
+
+// Lors du scroll de la page
+window.addEventListener("scroll", () => {
+  const centuriesInView = new Set();
+
+  document.querySelectorAll(".artwork-section").forEach(section => {
+    const rect = section.getBoundingClientRect();
+
+    if (rect.top <= 150 && rect.bottom >= 150) {
+      const centuries = section.dataset.century.split(" ");
+      centuries.forEach(c => centuriesInView.add(c));
+    }
+  });
+
+  updateActiveTimelineItems([...centuriesInView]);
+});
+
+// Fonction utilitaire pour mettre à jour les couleurs actives
+function updateActiveTimelineItems(activeCenturies) {
+  document.querySelectorAll(".timeline-item").forEach(item => {
+    const isActive = activeCenturies.includes(item.dataset.century);
+    item.classList.toggle("active", isActive);
+  });
+}
+
+
+
   // === INIT ÉTAT PAR DÉFAUT ===
   document.querySelector('[data-filter-author="all"]')?.classList.add("active");
   document.querySelector('[data-filter-century="all"]')?.classList.add("active");
