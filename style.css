@@ -1,6 +1,14 @@
 /* ======= POLICES GOOGLE ======= */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap');
 
+
+html {
+  overscroll-behavior-y: none;
+}
+
+
+
+
 /* ======= RESET DE BASE ======= */
 * {
   margin: 0;
