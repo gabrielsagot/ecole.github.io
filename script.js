@@ -109,6 +109,45 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+
+
+// === GESTION DES OUVERTURES MODALES PAR BOUTON/TEXTE ===
+document.querySelectorAll(".open-modal-btn, .open-modal-trigger").forEach(trigger => {
+  trigger.addEventListener("click", () => {
+    const imgSrc = trigger.getAttribute("data-img");
+
+    modalImage.src = imgSrc;
+
+    // Masquer tous les textes et détails pour ce type de déclencheur
+    modalTitle.textContent = "";
+    modalAuthor.textContent = "";
+    modalDate.textContent = "";
+    modalDescription.textContent = "";
+    technicalDetails.innerHTML = "";
+
+    modal.style.opacity = "0";
+    modal.style.display = "flex";
+    modalOpen = true;
+
+    gsap.to(modal, {
+      opacity: 1,
+      duration: 0.3,
+      ease: "power2.out"
+    });
+
+    gsap.fromTo(modalContent,
+      { opacity: 0, scale: 0.9 },
+      { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }
+    );
+  });
+}); 
+
+
+
+
+
+
+
   function closeModal() {
     if (!modalOpen) return;
 

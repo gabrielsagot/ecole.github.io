@@ -2,6 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap');
 
 
+
+
+
+#image-modal .modal-title:empty,
+#image-modal .modal-author:empty,
+#image-modal .modal-date:empty,
+#image-modal .modal-description:empty,
+#image-modal .technical-details:empty {
+  display: none;
+}
+
+
 html {
   overscroll-behavior-y: none;
 }
@@ -645,4 +657,64 @@ body {
 .timeline-item.active::after {
   background-color: #c6a972;
   transform: translateX(-50%) scale(1.4);
+}
+
+
+
+/* ======= BOUTON MODALE ULTRA ÉLÉGANT ======= */
+.open-modal-btn {
+  display: block;
+  margin: 1.5rem auto 0;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: #1c1c1c;
+  background: linear-gradient(to right, #f3e9db, #e9dbc6); /* beige doux doré */
+  border: 1px solid #d7c4a6;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.open-modal-btn:hover {
+  background: linear-gradient(to right, #f8f0e3, #f0e3d0);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.open-modal-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+
+
+.open-modal-trigger {
+  color: #b58f5b;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: #d7c4a6;
+  text-underline-offset: 3px;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+.open-modal-trigger:hover {
+  color: #a3773f;
+  text-decoration-color: #b58f5b;
+}
+
+
+
+.highlight {
+  color: #8e5c26;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.highlight:hover {
+  color: #c98d4f;
 }
