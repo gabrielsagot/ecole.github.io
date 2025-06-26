@@ -110,38 +110,31 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-
-// === GESTION DES OUVERTURES MODALES PAR BOUTON/TEXTE ===
+// === VERSION MINIMALISTE & FULLSCREEN ===
 document.querySelectorAll(".open-modal-btn, .open-modal-trigger").forEach(trigger => {
   trigger.addEventListener("click", () => {
     const imgSrc = trigger.getAttribute("data-img");
 
-    modalImage.src = imgSrc;
+    // Crée dynamiquement une div fullscreen
+    const fullscreenOverlay = document.createElement("div");
+    fullscreenOverlay.classList.add("fullscreen-overlay");
 
-    // Masquer tous les textes et détails pour ce type de déclencheur
-    modalTitle.textContent = "";
-    modalAuthor.textContent = "";
-    modalDate.textContent = "";
-    modalDescription.textContent = "";
-    technicalDetails.innerHTML = "";
+    // Crée l'image
+    const img = document.createElement("img");
+    img.src = imgSrc;
+    img.alt = "Image agrandie";
+    img.classList.add("fullscreen-image");
 
-    modal.style.opacity = "0";
-    modal.style.display = "flex";
-    modalOpen = true;
+    // Ajoute l'image à l'overlay
+    fullscreenOverlay.appendChild(img);
+    document.body.appendChild(fullscreenOverlay);
 
-    gsap.to(modal, {
-      opacity: 1,
-      duration: 0.3,
-      ease: "power2.out"
+    // Ferme au clic n'importe où
+    fullscreenOverlay.addEventListener("click", () => {
+      fullscreenOverlay.remove();
     });
-
-    gsap.fromTo(modalContent,
-      { opacity: 0, scale: 0.9 },
-      { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }
-    );
   });
-}); 
-
+});
 
 
 
